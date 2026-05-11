@@ -35,7 +35,7 @@ Przeczytaj: [00-what-is-agentcore.md](00-what-is-agentcore.md) — opis każdej 
 | AWS CLI | Skonfigurowane z credentials (`aws sts get-caller-identity` musi dzialac) |
 | Python | 3.10-3.13 (**NIE** 3.14 — `strands-agents` nie ma buildu) |
 | uv | Opcjonalne ale zalecane (`pip install uv`) |
-| Docker | Zainstalowany (Lab 4) — ale CodeBuild robi build server-side, wiec nie jest krytyczny |
+| Docker | **Nie wymagany** — Lab 4 uzywa CodeBuild server-side |
 | Bedrock Model Access | Auto-enable przy pierwszym invoke. Nic nie trzeba robic. |
 | Git | Do klonowania repo |
 

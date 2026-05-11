@@ -194,25 +194,15 @@ Jeśli nie: [git-scm.com/downloads](https://git-scm.com/downloads)
 
 ## Checklist przed warsztatem
 
-Uruchom po kolei i sprawdź czy wszystko OK:
+Odpal skrypt weryfikacyjny:
 
 ```bash
-# 1. AWS CLI
-aws --version
-
-# 2. Credentials
 export AWS_PROFILE=workshop
 export AWS_REGION=us-east-1
-aws sts get-caller-identity
-
-# 3. Python
-python3 --version  # 3.10-3.13
-
-# 4. Git
-git --version
+bash check-ready.sh
 ```
 
-Jeśli wszystkie 4 komendy przeszły bez błędu — jesteś gotowy.
+Powinno pokazać same `[OK]`. Jeśli coś jest `[FAIL]` — napraw wg instrukcji powyżej.
 
 ---
 

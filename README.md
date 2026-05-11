@@ -6,7 +6,8 @@ Hands-on workshop: budujemy Customer Support Agenta od prototypu do produkcji z 
 
 ## Zanim zaczniesz
 
-Przeczytaj i wykonaj: [workshop/00-prerequisites.md](workshop/00-prerequisites.md)
+1. Przeczytaj i wykonaj: [workshop/00-prerequisites.md](workshop/00-prerequisites.md)
+2. Sprawdź gotowość: `bash check-ready.sh`
 
 ## Instrukcje
 

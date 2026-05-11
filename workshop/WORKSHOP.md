@@ -19,6 +19,12 @@ Budujesz Customer Support Agenta od prototypu do produkcji:
 
 ---
 
+## Co to jest AgentCore?
+
+Przeczytaj: [00-what-is-agentcore.md](00-what-is-agentcore.md) — opis każdej usługi i jak łączą się w warsztacie.
+
+---
+
 ## Wymagania
 
 **Przeczytaj i wykonaj PRZED warsztatem**: [00-prerequisites.md](00-prerequisites.md)

@@ -19,10 +19,10 @@ cd 09-AgentCore-E2E/strands-agents
 source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
-python /path/to/workshop/lab3.py
+python ../../workshop/lab3.py
 
 # Z opcjonalnym Policy Engine:
-ENABLE_POLICY_ENGINE=true python /path/to/workshop/lab3.py
+ENABLE_POLICY_ENGINE=true python ../../workshop/lab3.py
 ```
 
 ## Architektura Lab 3
@@ -40,6 +40,42 @@ ENABLE_POLICY_ENGINE=true python /path/to/workshop/lab3.py
             ├── check_warranty_status → Lambda → DynamoDB
             └── web_search           → Lambda → DuckDuckGo
 ```
+
+## Co zobaczysz po uruchomieniu
+
+```
+Region: us-east-1
+
+--- Step 1: Setting up Cognito authentication ---
+  Creating Cognito User Pool: MCPServerPool
+  Pool ID: us-east-1_XXXXXXXXX
+  Creating user: testuser
+  Bearer token obtained: eyJraWQiOi...
+
+--- Step 2: Creating AgentCore Gateway ---
+  Gateway created: gw-XXXXXXXXXX
+  Adding JWT authorizer...
+  Authorizer configured.
+
+--- Step 3: Adding Lambda target to Gateway ---
+  Adding target: LambdaUsingSDK
+  Registering tools: check_warranty_status, web_search
+  Target ACTIVE
+
+--- Step 4: Creating agent with Gateway tools ---
+  Connecting MCPClient to Gateway...
+  Available MCP tools: ['check_warranty_status', 'web_search']
+  Agent created with 5 tools (3 local + 2 MCP)
+
+--- Step 5: Testing agent with MCP tools ---
+Query: "Check warranty for serial ABC12345678 and help with setup"
+Agent: "I checked the warranty status for serial ABC12345678.
+        The warranty is active until 2025-12-31..."
+
+--- Lab 3 Complete ---
+```
+
+Agent teraz uzywa **zdalnych toolow** przez Gateway (MCP protocol) + **lokalnych** razem.
 
 ## Typowe błędy
 

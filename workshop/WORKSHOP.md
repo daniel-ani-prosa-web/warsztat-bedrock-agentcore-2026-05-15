@@ -30,7 +30,7 @@ Budujesz Customer Support Agenta od prototypu do produkcji:
 | Python | 3.10-3.13 (**NIE** 3.14 — `strands-agents` nie ma buildu) |
 | uv | Opcjonalne ale zalecane (`pip install uv`) |
 | Docker | Zainstalowany (Lab 4) — ale CodeBuild robi build server-side, wiec nie jest krytyczny |
-| Bedrock Model Access | Amazon Nova 2 Lite (`global.amazon.nova-2-lite-v1:0`) — 1-click enable |
+| Bedrock Model Access | Auto-enable przy pierwszym invoke. Nic nie trzeba robic. |
 | Git | Do klonowania repo |
 
 ### Bez lokalnego CLI?
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 
 ### 4. Bedrock Model Access
 
-AWS Console → Amazon Bedrock → Model Access → Enable **Amazon Nova 2 Lite**
+Nic nie trzeba robic — modele aktywuja sie automatycznie przy pierwszym invoke.
 
 ### 5. Deploy infrastruktury
 
@@ -117,7 +117,7 @@ Labs 1-6 buduja na sobie — nie pomijaj. Lab 7 i 8 sa **standalone** (niezalezn
 ## Cleanup (OBOWIAZKOWE)
 
 ```bash
-python workshop/cleanup.py
+python ../../workshop/cleanup.py
 bash scripts/cleanup.sh
 ```
 
@@ -155,7 +155,7 @@ Po kazdym labie uczestnicy moga otworzyc konsole i zobaczyc co sie stalo. Najcie
 - Python 3.14 **nie dziala** z `strands-agents`. Uzyj 3.13 lub nizej.
 
 ### Model access
-- Model ID: `global.amazon.nova-2-lite-v1:0` (cross-region inference profile). Upewnij sie ze Nova 2 Lite jest wlaczona.
+- Model ID: `global.amazon.nova-2-lite-v1:0` (cross-region inference profile). Auto-enable przy pierwszym invoke.
 
 ### prereq.sh
 - Trwa ~10 min. NIE przerywaj. CloudFormation kontynuuje server-side, ale skrypt nie wie o tym.

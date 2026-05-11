@@ -19,8 +19,45 @@ cd 09-AgentCore-E2E/strands-agents
 source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
-python /path/to/workshop/lab2.py
+python ../../workshop/lab2.py
 ```
+
+## Co zobaczysz po uruchomieniu
+
+```
+Region: us-east-1
+
+--- Step 1: Creating AgentCore Memory ---
+Memory CustomerSupportMemory already exists: mem-XXXXXXXXXX
+  (lub: Creating memory... Status: CREATING... Status: ACTIVE)
+
+--- Step 2: Seeding historical interactions ---
+  Seeding interaction 1/6: laptop recommendation
+  Seeding interaction 2/6: return policy question
+  ...
+  Seeding interaction 6/6: software update help
+  All 6 interactions seeded.
+
+--- Step 3: Waiting for LTM extraction ---
+  Checking... 1/12 (processing takes ~60s)
+  Checking... 5/12
+  Found 3 extracted memories!
+  Memory 1: USER_PREFERENCE — "Customer prefers eco-friendly products"
+  Memory 2: SEMANTIC — "Customer had issues with laptop battery..."
+  ...
+
+--- Step 4: Creating memory-enhanced agent ---
+Agent created with AgentCoreMemorySessionManager
+
+--- Step 5: Testing personalized responses ---
+Query: "Do you remember my preferences?"
+Agent: "Based on our previous conversations, I can see you prefer
+        eco-friendly products and have a laptop that..."
+
+--- Lab 2 Complete ---
+```
+
+Agent odpowiada **spersonalizowanie** — zna historię klienta z seeded interactions.
 
 ## Co trwa najdłużej
 

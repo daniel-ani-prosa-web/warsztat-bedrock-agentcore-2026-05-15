@@ -24,7 +24,7 @@ cd 09-AgentCore-E2E/strands-agents
 source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
-python /path/to/workshop/lab4.py
+python ../../workshop/lab4.py
 ```
 
 ## Co trwa najdłużej

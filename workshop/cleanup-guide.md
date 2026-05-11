@@ -9,7 +9,7 @@ cd 09-AgentCore-E2E/strands-agents
 source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
-python /path/to/workshop/cleanup.py
+python ../../workshop/cleanup.py
 ```
 
 Skrypt usunie:

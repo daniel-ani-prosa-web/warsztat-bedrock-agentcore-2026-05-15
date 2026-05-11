@@ -125,17 +125,11 @@ export AWS_REGION=us-east-1
 
 ---
 
-## 5. Włącz Bedrock Model Access
+## 5. Bedrock Model Access
 
-1. AWS Console → wyszukaj **Amazon Bedrock** → kliknij
-2. Lewy panel → **Model access** (lub **Bedrock configurations** → **Model access**)
-3. Kliknij **Enable specific models** (lub **Modify model access**)
-4. Zaznacz:
-   - **Amazon Nova 2 Lite** (Labs 1-6)
-   - **Claude 4.5 Haiku** (Lab 7 — opcjonalnie)
-5. Kliknij **Next** → **Submit**
+Modele Amazon Bedrock (Nova Lite, Claude) **aktywują się automatycznie** przy pierwszym wywołaniu — nie trzeba nic włączać ręcznie. Strona "Model access" w konsoli została wycofana.
 
-Aktywacja jest natychmiastowa (1-click enable).
+Jedyny wyjątek: modele Anthropic (Claude) mogą wymagać jednorazowego podania use case przy pierwszym użyciu. Jeśli Lab 7 (Harness, Claude Haiku) zwróci `AccessDeniedException`, wejdź w Bedrock → Model catalog → Claude 4.5 Haiku → spróbuj otworzyć w playground — poprosi o use case form.
 
 ---
 

@@ -48,7 +48,7 @@ Dependencies: tylko `boto3` (juz zainstalowany).
 ## Krok 3: Uruchom
 
 ```bash
-python /path/to/workshop/lab7-harness.py
+python ../../workshop/lab7-harness.py
 ```
 
 ## Co robi skrypt

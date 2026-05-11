@@ -26,10 +26,50 @@ cd 09-AgentCore-E2E/strands-agents
 source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
-python /path/to/workshop/lab5.py
+python ../../workshop/lab5.py
 ```
 
-## Wyniki
+## Co zobaczysz po uruchomieniu
+
+```
+Region: us-east-1
+
+--- Step 1: Retrieving agent info from Lab 4 ---
+Agent ID: ag-XXXXXXXXXX
+Agent ARN: arn:aws:bedrock-agentcore:us-east-1:123456789012:...
+
+--- Step 2: Creating online evaluation configuration ---
+Evaluators: GoalSuccessRate, Correctness, ToolSelectionAccuracy
+Sampling rate: 100%
+Configuration ID: eval-XXXXXXXXXX
+
+--- Step 3: Verifying configuration ---
+{ "onlineEvaluationConfigId": "eval-XXXXXXXXXX", ... }
+
+--- Step 4: Generating test interactions for evaluation ---
+  [Product info]: I need information about the Gaming Console Pro...
+  Response: "The Gaming Console Pro features a 4K display..."
+
+  [Tech support]: My laptop won't start up...
+  Response: "I'd be happy to help troubleshoot..."
+
+  [Return policy]: I bought a smartphone last week...
+  Response: "Our return policy allows returns within 30 days..."
+
+  [Multi-tool]: Check warranty for serial MNO33333333...
+  Response: "I checked the warranty and it shows..."
+
+  [Capabilities]: What kind of support can you provide?...
+  Response: "I can help with product information..."
+
+--- Lab 5 Complete ---
+Evaluation config ID: eval-XXXXXXXXXX
+View results in CloudWatch: https://console.aws.amazon.com/cloudwatch/...
+```
+
+5 test queries generuje traces. Evaluators automatycznie oceniaja kazdy trace.
+
+## Wyniki w CloudWatch
 
 Po zakonczeniu, sprawdz dashboard:
 CloudWatch → GenAI Observability → Bedrock AgentCore → agent → DEFAULT endpoint

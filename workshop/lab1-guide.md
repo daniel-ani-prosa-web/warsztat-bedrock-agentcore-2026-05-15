@@ -23,7 +23,7 @@ export AWS_PROFILE=personal  # <- zmień na swój profil
 export AWS_REGION=us-east-1   # <- zmień na swój region
 
 # Odpal lab
-python workshop/lab1.py
+python ../../workshop/lab1.py
 ```
 
 ## Oczekiwany output

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.env
+.bedrock_agentcore.yaml
+Dockerfile
+lambda.zip
+ddgs-layer.zip
+*.zip
+.ipynb_checkpoints/
+.DS_Store

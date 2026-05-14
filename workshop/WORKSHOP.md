@@ -127,6 +127,8 @@ python ../../workshop/cleanup.py
 bash scripts/cleanup.sh
 ```
 
+`scripts/cleanup.sh` jest interaktywny. W dry-runie automatycznym uzyj `printf 'y\ny\n' | bash scripts/cleanup.sh`.
+
 Szczegoly: [cleanup-guide.md](cleanup-guide.md)
 
 **Runtime kosztuje dopoki nie usuniesz.** Nie zostawiaj na noc.
@@ -190,7 +192,8 @@ Po kazdym labie uczestnicy moga otworzyc konsole i zobaczyc co sie stalo. Najcie
 ### Lab 6 (Frontend)
 - Wymaga aktywnego Runtime z Lab 4 i Cognito secret z Lab 3.
 - Dziala na `http://localhost:8501`. Credentials: `testuser` / `MyPassword123!`
-- Bug w `main.py`: `uuid.uuidv4()` — powinno byc `str(uuid.uuid4())`. Napraw recznie jesli wyrzuci blad.
+- Instaluj frontend przez `uv pip install -r lab_helpers/lab5_frontend/requirements.txt` po aktywacji `.venv`.
+- Uruchamiaj jako `python -m streamlit run main.py`, zeby uzyc Streamlit z tego samego venv.
 - Lab opcjonalny — pokaz w trybie demo jesli brak czasu na warsztacie.
 
 ### Lab 8 (Payments)
@@ -200,7 +203,9 @@ Po kazdym labie uczestnicy moga otworzyc konsole i zobaczyc co sie stalo. Najcie
 
 ### Lab 7 (Harness)
 - Standalone — nie zalezy od Labs 1-6. Mozna odpalic osobno.
-- Wymaga model access: **Claude Haiku 4.5** (lub zmien na Nova Lite w skrypcie).
+- Uruchamiaj z `11-AgentCore-harness`: `python ../workshop/lab7-harness.py`.
+- Domyslny model: `amazon.nova-lite-v1:0`. Mozna nadpisac przez `BEDROCK_HARNESS_MODEL_ID`.
+- Claude Haiku 4.5 moze wymagac AWS Marketplace subscription; na warsztat zostaw Nova Lite.
 - Harness sam sie czyści (delete w skrypcie). Nic nie zostaje po labie.
 - IAM role `HarnessExecutionRole` — idempotentna, usuwana na koncu.
 

@@ -30,10 +30,19 @@ Twoj komputer (boto3)
 
 ## Krok 1: Model access
 
-Harness uzywa **Claude Haiku 4.5** (default w tym labie). Upewnij sie ze jest wlaczony:
-AWS Console → Bedrock → Model Access → Enable **Claude 4.5 Haiku**
+Harness domyslnie uzywa **Amazon Nova Lite**:
 
-Mozna tez uzyc Nova Lite — zmien `modelId` w skrypcie na `global.amazon.nova-2-lite-v1:0`.
+```bash
+export BEDROCK_HARNESS_MODEL_ID=amazon.nova-lite-v1:0
+```
+
+To jest najbezpieczniejszy model na warsztat, bo nie wymaga subskrypcji AWS Marketplace. Jesli chcesz pokazac Claude Haiku 4.5, ustaw:
+
+```bash
+export BEDROCK_HARNESS_MODEL_ID=global.anthropic.claude-haiku-4-5-20251001-v1:0
+```
+
+Claude moze zwrocic `AccessDeniedException`, jesli konto nie ma wymaganej subskrypcji/uprawnien Marketplace. Wtedy zostan przy Nova Lite.
 
 ## Krok 2: Instalacja
 
@@ -48,8 +57,10 @@ Dependencies: tylko `boto3` (juz zainstalowany).
 ## Krok 3: Uruchom
 
 ```bash
-python ../../workshop/lab7-harness.py
+python ../workshop/lab7-harness.py
 ```
+
+Wazne: komenda jest uruchamiana z katalogu `11-AgentCore-harness`. Sciezka `../../workshop/lab7-harness.py` wychodzi poza katalog repo i jest bledna.
 
 ## Co robi skrypt
 
@@ -83,7 +94,8 @@ python ../../workshop/lab7-harness.py
 
 | Blad | Przyczyna | Rozwiazanie |
 |------|-----------|-------------|
-| `AccessDeniedException` on InvokeModel | Brak model access | Enable Claude Haiku 4.5 w Bedrock |
+| `AccessDeniedException` on InvokeModel / `aws-marketplace:Subscribe` | Claude wymaga Marketplace subscription/uprawnien | Uzyj domyslnego `amazon.nova-lite-v1:0` albo ustaw `BEDROCK_HARNESS_MODEL_ID=amazon.nova-lite-v1:0` |
+| `can't open file ... ../../workshop/lab7-harness.py` | Zla relatywna sciezka z `11-AgentCore-harness` | Uzyj `python ../workshop/lab7-harness.py` |
 | Harness stuck in CREATING | IAM role nie propagated | Czekaj dluzej lub sprobuj ponownie |
 | `NoSuchEntityException` on role | Juz wyczyszczone | Ignoruj |
 

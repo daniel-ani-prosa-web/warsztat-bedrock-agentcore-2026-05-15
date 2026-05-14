@@ -46,13 +46,14 @@ try:
     from boto3.session import Session
     eval_region = Session().region_name
     eval_client = Evaluation(region=eval_region)
-    runtime_arn = get_ssm_parameter("/app/customersupport/agentcore/runtime_arn")
-    agent_id = runtime_arn.split(":")[-1].split("/")[-1]
-    configs = eval_client.list_online_configs(agent_id=agent_id)
+    # The current starter toolkit exposes agent_id, but the backing API rejects
+    # that filter in some versions. List all configs and delete workshop-owned ones.
+    configs = eval_client.list_online_configs()
     for cfg in configs.get("onlineEvaluationConfigs", []):
         cfg_id = cfg["onlineEvaluationConfigId"]
-        eval_client.delete_online_config(config_id=cfg_id)
-        print(f"  Deleted eval config: {cfg_id}")
+        if cfg_id.startswith("customer_support_agent_eval"):
+            eval_client.delete_online_config(config_id=cfg_id, delete_execution_role=True)
+            print(f"  Deleted eval config: {cfg_id}")
 except Exception as e:
     print(f"  Skipped: {e}")
 

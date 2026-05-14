@@ -127,9 +127,9 @@ export AWS_REGION=us-east-1
 
 ## 5. Bedrock Model Access
 
-Modele Amazon Bedrock (Nova Lite, Claude) **aktywują się automatycznie** przy pierwszym wywołaniu — nie trzeba nic włączać ręcznie. Strona "Model access" w konsoli została wycofana.
+Modele Amazon Bedrock z rodziny Nova zwykle aktywują się automatycznie przy pierwszym wywołaniu — nie trzeba nic włączać ręcznie.
 
-Jedyny wyjątek: modele Anthropic (Claude) mogą wymagać jednorazowego podania use case przy pierwszym użyciu. Jeśli Lab 7 (Harness, Claude Haiku) zwróci `AccessDeniedException`, wejdź w Bedrock → Model catalog → Claude 4.5 Haiku → spróbuj otworzyć w playground — poprosi o use case form.
+Lab 7 domyślnie używa `amazon.nova-lite-v1:0`, żeby uniknąć zależności od AWS Marketplace. Modele Anthropic (Claude) mogą wymagać subskrypcji/uprawnień Marketplace (`aws-marketplace:ViewSubscriptions`, `aws-marketplace:Subscribe`). Jeśli ustawisz Claude i zobaczysz `AccessDeniedException`, wróć do Nova Lite.
 
 ---
 

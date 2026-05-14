@@ -33,6 +33,8 @@ The jupyter notebook [01_getting_started_bedrock.ipynb](01_getting_started_bedro
 - Use `execute_command` to run shell commands on the agent's VM (not local `!` commands)
 - The agent has `file_operations` and `shell` tools available by default
 - Sessions are identified by a unique `session_id`
+- Workshop-safe default model: `amazon.nova-lite-v1:0`
+- Claude models can fail with `AccessDeniedException` if the account lacks AWS Marketplace subscription permissions; use Nova for the hands-on path.
 
 ## Next Steps
 

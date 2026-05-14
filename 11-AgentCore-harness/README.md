@@ -39,7 +39,7 @@ Each example needs an IAM execution role (`HarnessExecutionRole`) with the follo
 
 | Permission | Purpose |
 |---|---|
-| `bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream` | Model invocation (Claude, Llama, etc.) |
+| `bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream` | Model invocation (Nova by default; Claude may require Marketplace subscription) |
 | `ecr:GetDownloadUrlForLayer`, `ecr:BatchGetImage`, `ecr:BatchCheckLayerAvailability`, `ecr:GetAuthorizationToken` | Pull custom container images from ECR |
 | `ecr-public:GetAuthorizationToken`, `sts:GetServiceBearerToken` | Pull from public ECR |
 | `xray:PutTraceSegments`, `xray:PutTelemetryRecords` | AgentCore Observability traces |
@@ -54,12 +54,14 @@ The role uses a trust policy that allows `bedrock-agentcore.amazonaws.com` to as
 
 Each notebook includes cleanup cells at the bottom. The CLI script cleans up automatically unless you pass `--skip-cleanup`.
 
-```bash
+```python
+import boto3
+
+client = boto3.client("bedrock-agentcore-control", region_name="<your-region>")
+
 # List all harnesses
-aws bedrock-agentcore-control list-harnesses --region <your-region>
+print(client.list_harnesses().get("harnesses", []))
 
 # Delete a specific Harness
-aws bedrock-agentcore-control delete-harness --region <your-region> \
-    --harness-id <HARNESS_ID>
-
+client.delete_harness(harnessId="<HARNESS_ID>")
 ```

@@ -96,8 +96,15 @@ Runtime jest billed per-second. Po zakończeniu testów przejdź do Lab 5/6 albo
 
 Ręczne usunięcie:
 ```bash
-aws bedrock-agentcore-control delete-agent-runtime --agent-runtime-id RUNTIME_ID --region us-east-1
+python - <<'PY'
+import boto3
+
+client = boto3.client("bedrock-agentcore-control", region_name="us-east-1")
+client.delete_agent_runtime(agentRuntimeId="RUNTIME_ID")
+PY
 ```
+
+Preferowana sciezka to jednak [cleanup-guide.md](cleanup-guide.md), bo usuwa tez Gateway, Memory, ECR, IAM, Cognito i CloudFormation. Nie kazda wersja AWS CLI ma jeszcze komendy `bedrock-agentcore-control`, dlatego w guide'ach uzywamy boto3 do recznych operacji AgentCore.
 
 ## Observability — eksploracja w CloudWatch (5 min)
 

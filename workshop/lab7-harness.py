@@ -73,7 +73,8 @@ else:
 # ---------------------------------------------------------------------------
 # Step 3: Invoke agent — ask a question, agent saves to file
 # ---------------------------------------------------------------------------
-print("\n--- Step 3: Invoking agent (Claude Haiku 4.5) ---")
+MODEL_ID = os.environ.get("BEDROCK_HARNESS_MODEL_ID", "amazon.nova-lite-v1:0")
+print(f"\n--- Step 3: Invoking agent ({MODEL_ID}) ---")
 
 session_id = str(uuid.uuid4()).upper()
 print(f"Session ID: {session_id}\n")
@@ -94,7 +95,7 @@ response = client.invoke_harness(
     ],
     model={
         "bedrockModelConfig": {
-            "modelId": "global.anthropic.claude-haiku-4-5-20251001-v1:0"
+            "modelId": MODEL_ID
         }
     },
 )

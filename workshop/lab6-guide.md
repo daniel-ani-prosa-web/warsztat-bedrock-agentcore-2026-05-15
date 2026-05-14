@@ -39,26 +39,32 @@ source .venv/bin/activate
 export AWS_PROFILE=personal AWS_REGION=us-east-1
 
 # Sprawdz status Runtime
-aws bedrock-agentcore-control list-agent-runtimes \
-  --query 'agentRuntimes[].{id:agentRuntimeId, status:status}' \
-  --output table
+python - <<'PY'
+import boto3
+
+client = boto3.client("bedrock-agentcore-control")
+for runtime in client.list_agent_runtimes().get("agentRuntimes", []):
+    print(runtime["agentRuntimeId"], runtime["status"])
+PY
 ```
 
-Status musi byc `READY`. Jesli nie ma nic — wrocz do Lab 4.
+Status runtime z Lab 4 musi byc `READY`. Jesli nie ma nic — wrocz do Lab 4.
 
 ## Krok 2: Doinstaluj frontend dependencies
 
 ```bash
-pip install -r lab_helpers/lab5_frontend/requirements.txt
+uv pip install -r lab_helpers/lab5_frontend/requirements.txt
 ```
 
 Instaluje: `streamlit`, `requests`, `boto3`, `streamlit-cognito-auth`
+
+Uzywaj `uv pip` po aktywacji `.venv`. Na macOS zwykle `pip install ...` bezposrednio po `source .venv/bin/activate` potrafi trafic w systemowego Pythona 3.9/user site, a wtedy `streamlit` nie bedzie widoczny w srodowisku warsztatu.
 
 ## Krok 3: Odpal Streamlit
 
 ```bash
 cd lab_helpers/lab5_frontend/
-streamlit run main.py
+python -m streamlit run main.py
 ```
 
 Output:
@@ -121,7 +127,7 @@ Session ID jest generowany per sesje Streamlit — mapuje sie na AgentCore Memor
 | `ParameterNotFound` runtime_arn | Lab 4 nie odpalony | Uruchom lab4.py |
 | 403 / Connection refused | Runtime nie READY lub usuniety | Sprawdz `list-agent-runtimes` |
 | Login fails | Zle credentials lub pool usuniety | `testuser` / `MyPassword123!`, sprawdz Cognito w konsoli |
-| `ModuleNotFoundError: streamlit` | Nie zainstalowane deps | `pip install -r lab_helpers/lab5_frontend/requirements.txt` |
+| `ModuleNotFoundError: streamlit` | Deps nie sa w `.venv` | Wroc do `09-AgentCore-E2E/strands-agents`, aktywuj `.venv`, odpal `uv pip install -r lab_helpers/lab5_frontend/requirements.txt`, potem `python -m streamlit run main.py` |
 | Timeout / brak odpowiedzi | Runtime cold start | Poczekaj 10-15s, sprobuj ponownie |
 
 ## Eksploracja w konsoli AWS

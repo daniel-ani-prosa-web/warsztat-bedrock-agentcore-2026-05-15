@@ -30,10 +30,18 @@ Skrypt usunie:
 bash scripts/cleanup.sh
 ```
 
+Skrypt pyta o potwierdzenie usuniecia stackow i bucketu artefaktow. Jesli odpalasz go w automatycznym dry-runie, podaj odpowiedzi przez stdin:
+
+```bash
+printf 'y\ny\n' | bash scripts/cleanup.sh
+```
+
 Lub w konsoli AWS:
 1. CloudFormation → Delete `CustomerSupportStackCognito`
 2. CloudFormation → Delete `CustomerSupportStackInfra`
 3. S3 → Empty + Delete bucket `customersupport112-{ACCOUNT_ID}-{REGION}`
+
+`cleanup.sh` przed usunieciem `CustomerSupportStackInfra` oproznia bucket danych Knowledge Base. Bez tego CloudFormation moze wejsc w `DELETE_FAILED` na zasobie `BedrockKnowledgeBaseDataBucket`.
 
 ## Weryfikacja
 
@@ -42,5 +50,13 @@ Lub w konsoli AWS:
 aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE --query 'StackSummaries[?contains(StackName, `CustomerSupport`)].StackName' --output text
 
 # Sprawdz czy Runtime usuniety
-aws bedrock-agentcore-control list-agent-runtimes --query 'agentRuntimes[].agentRuntimeId' --output text
+python - <<'PY'
+import boto3
+
+client = boto3.client("bedrock-agentcore-control")
+print(client.list_agent_runtimes().get("agentRuntimes", []))
+PY
+
+# Sprawdz czy nie zostaly SSM parametry warsztatu
+aws ssm get-parameters-by-path --path /app/customersupport --recursive --query 'Parameters[].Name' --output text
 ```

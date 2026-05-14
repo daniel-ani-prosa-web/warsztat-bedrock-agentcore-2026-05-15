@@ -4,6 +4,12 @@
 
 Hands-on workshop: budujemy Customer Support Agenta od prototypu do produkcji z Amazon Bedrock AgentCore.
 
+## Start tutaj
+
+Główny przewodnik dla uczestników: [workshop/WORKSHOP.md](workshop/WORKSHOP.md)
+
+Repo zawiera też upstreamowe sample AWS w katalogach `09-AgentCore-E2E/` i `11-AgentCore-harness/`. Nie zaczynaj od nich. Traktuj je jako katalogi robocze wskazywane przez guide.
+
 ## Zanim zaczniesz
 
 1. Przeczytaj co budujemy: [workshop/00-what-is-agentcore.md](workshop/00-what-is-agentcore.md)
@@ -12,7 +18,7 @@ Hands-on workshop: budujemy Customer Support Agenta od prototypu do produkcji z 
 
 ## Instrukcje
 
-Główny guide: [workshop/WORKSHOP.md](workshop/WORKSHOP.md)
+Pełna mapa repo i katalogów roboczych: [workshop/REPO-STRUCTURE.md](workshop/REPO-STRUCTURE.md)
 
 ## Struktura
 
@@ -20,14 +26,15 @@ Główny guide: [workshop/WORKSHOP.md](workshop/WORKSHOP.md)
 workshop/                    ← instrukcje + skrypty do odpalenia
   00-prerequisites.md        ← setup przed warsztatem
   WORKSHOP.md                ← master guide
+  REPO-STRUCTURE.md          ← gdzie pracujemy w każdym labie
   lab1-guide.md .. lab8-guide.md
   lab1.py .. lab7-harness.py
   cleanup.py, cleanup-guide.md
 
-09-AgentCore-E2E/            ← source code (z awslabs/amazon-bedrock-agentcore-samples)
+09-AgentCore-E2E/            ← katalog roboczy Labs 1-6
   strands-agents/            ← Labs 1-6: Customer Support Agent E2E
 
-11-AgentCore-harness/        ← source code
+11-AgentCore-harness/        ← katalog roboczy Lab 7
   00-getting-started/        ← Lab 7: Harness
 ```
 

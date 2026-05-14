@@ -25,6 +25,23 @@ Przeczytaj: [00-what-is-agentcore.md](00-what-is-agentcore.md) — opis każdej 
 
 ---
 
+## Jak czytać to repo
+
+Ten folder `workshop/` jest głównym wejściem dla uczestników. Zawiera guide'y i wrapper skrypty, które prowadzą przez upstreamowe sample AWS.
+
+Katalogi robocze:
+
+| Co robisz | Gdzie jesteś w terminalu | Co uruchamiasz |
+|-----------|---------------------------|----------------|
+| Setup i Labs 1-6 | `09-AgentCore-E2E/strands-agents` | `python ../../workshop/labX.py` |
+| Frontend Lab 6 | `09-AgentCore-E2E/strands-agents` → `lab_helpers/lab5_frontend` | `python -m streamlit run main.py` |
+| Harness Lab 7 | `11-AgentCore-harness` | `python ../workshop/lab7-harness.py` |
+| Cleanup | `09-AgentCore-E2E/strands-agents` | `python ../../workshop/cleanup.py`, potem `bash scripts/cleanup.sh` |
+
+Szczegóły: [REPO-STRUCTURE.md](REPO-STRUCTURE.md)
+
+---
+
 ## Wymagania
 
 **Przeczytaj i wykonaj PRZED warsztatem**: [00-prerequisites.md](00-prerequisites.md)

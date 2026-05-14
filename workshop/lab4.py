@@ -3,7 +3,7 @@ Lab 4: Deploy to Production with AgentCore Runtime
 ====================================================
 Builds Docker image, pushes to ECR, deploys agent to AgentCore Runtime.
 Requires Docker running locally.
-Run from strands-agents/ directory: python /path/to/workshop/lab4.py
+Run from strands-agents/ directory: python ../../workshop/lab4.py
 """
 
 import os

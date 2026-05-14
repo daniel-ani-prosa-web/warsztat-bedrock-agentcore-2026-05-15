@@ -3,7 +3,7 @@ Lab 3: Scale with Gateway and Identity
 ========================================
 Creates AgentCore Gateway with Lambda target, Cognito auth, MCP client integration.
 Optional: Cedar policy engine for fine-grained access control.
-Run from strands-agents/ directory: python /path/to/workshop/lab3.py
+Run from strands-agents/ directory: python ../../workshop/lab3.py
 """
 
 import json

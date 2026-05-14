@@ -2,7 +2,7 @@
 Lab 2: Enhance Agent with AgentCore Memory
 ============================================
 Adds persistent short-term and long-term memory to the customer support agent.
-Run from strands-agents/ directory: python /path/to/workshop/lab2.py
+Run from strands-agents/ directory: python ../../workshop/lab2.py
 """
 
 import logging

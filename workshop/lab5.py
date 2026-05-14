@@ -3,7 +3,7 @@ Lab 5: Evaluate Agent Performance (Online Evaluations)
 =======================================================
 Configures continuous online evaluation for the deployed agent.
 Requires Runtime from Lab 4 to be active.
-Run from strands-agents/ directory: python /path/to/workshop/lab5.py
+Run from strands-agents/ directory: python ../../workshop/lab5.py
 """
 
 import json

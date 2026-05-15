@@ -8,5 +8,6 @@ Dockerfile
 lambda.zip
 ddgs-layer.zip
 *.zip
+!09-AgentCore-E2E/strands-agents/prerequisite/lambda/python/ddgs-layer.zip
 .ipynb_checkpoints/
 .DS_Store
